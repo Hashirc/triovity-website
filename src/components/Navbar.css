@@ -1,0 +1,133 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  transition: var(--transition);
+  background-color: transparent;
+}
+
+.nav-scrolled {
+  background-color: var(--color-glass-bg);
+  box-shadow: var(--shadow-sm);
+  height: 70px;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--color-text-main);
+  letter-spacing: -0.05em;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-link {
+  font-weight: 500;
+  color: var(--color-text-main);
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--color-primary-red);
+  transition: var(--transition);
+}
+
+.nav-link:hover::after,
+.nav-link.active-link::after {
+  width: 100%;
+}
+
+.nav-link:hover,
+.nav-link.active-link {
+  color: var(--color-primary-red);
+}
+
+.nav-cta-mobile {
+  display: none;
+}
+
+.mobile-toggle {
+  display: none;
+  cursor: pointer;
+  color: var(--color-text-main);
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 992px) {
+  .nav-list {
+    gap: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .nav-menu {
+    position: fixed;
+    top: 80px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 80px);
+    background-color: var(--color-bg-light);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s ease-in-out;
+  }
+
+  .nav-scrolled ~ .nav-container .nav-menu {
+    top: 70px;
+    height: calc(100vh - 70px);
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .nav-link {
+    font-size: 1.2rem;
+  }
+
+  .mobile-toggle {
+    display: block;
+  }
+
+  .nav-cta-desktop {
+    display: none;
+  }
+
+  .nav-cta-mobile {
+    display: block;
+  }
+}

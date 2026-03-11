@@ -1,0 +1,145 @@
+.footer {
+  background-color: #0b192c; /* Dark complementary background for footer */
+  color: #fff;
+  padding-top: 5rem;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-title {
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.footer-desc {
+  color: #a0aec0;
+  margin-bottom: 1.5rem;
+}
+
+.footer-subtitle {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.footer-subtitle::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  height: 2px;
+  background-color: var(--color-primary-red);
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: #fff;
+  transition: var(--transition);
+}
+
+.social-icon:hover {
+  background-color: var(--color-primary-red);
+  transform: translateY(-3px);
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+  color: #a0aec0;
+  transition: var(--transition);
+}
+
+.footer-links a:hover {
+  color: var(--color-primary-red);
+  padding-left: 5px;
+}
+
+.contact-info {
+  list-style: none;
+}
+
+.contact-info li {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  color: #a0aec0;
+  align-items: flex-start;
+}
+
+.contact-icon {
+  color: var(--color-primary-red);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.newsletter-form {
+  display: flex;
+  margin-top: 1rem;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: var(--border-radius-sm) 0 0 var(--border-radius-sm);
+  outline: none;
+  font-family: inherit;
+}
+
+.btn-send {
+  background-color: var(--color-primary-red);
+  color: #fff;
+  border: none;
+  padding: 0 1.2rem;
+  border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-send:hover {
+  background-color: var(--color-primary-red-hover);
+}
+
+.footer-bottom {
+  background-color: #050d18;
+  padding: 1.5rem 0;
+  text-align: center;
+  color: #a0aec0;
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 768px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
