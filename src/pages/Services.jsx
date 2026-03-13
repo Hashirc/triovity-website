@@ -1,6 +1,21 @@
 import { Globe, Search, Share2, PenTool, MousePointerClick, PieChart, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import './Services.css';
+
+// Animation Variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 }
+  }
+};
 
 const servicesData = [
   {
@@ -52,20 +67,36 @@ const Services = () => {
     <div className="services-page">
       {/* Page Header */}
       <section className="page-header text-center gradient-bg">
-        <div className="container">
-          <h1 className="animate-fade-up">Our <span className="text-highlight">Services</span></h1>
-          <p className="page-subtitle animate-fade-up" style={{ animationDelay: '0.2s' }}>
+        <motion.div 
+          className="container"
+          initial="hidden"
+          animate="visible"
+          variants={staggerContainer}
+        >
+          <motion.h1 variants={fadeInUp}>Our <span className="text-highlight">Services</span></motion.h1>
+          <motion.p className="page-subtitle" variants={fadeInUp}>
             A full suite of digital solutions to accelerate your growth.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
       </section>
 
       {/* Services List */}
       <section className="services-list-section section-padding">
         <div className="container">
-          <div className="services-full-grid">
+          <motion.div 
+            className="services-full-grid"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={staggerContainer}
+          >
             {servicesData.map((service, index) => (
-              <div className="service-detail-card glass" key={service.id}>
+              <motion.div 
+                className="service-detail-card glass" 
+                key={service.id}
+                variants={fadeInUp}
+                whileHover={{ scale: 1.03, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }}
+              >
                 <div className="service-header">
                   <div className="service-icon-large text-highlight">
                     {service.icon}
@@ -85,21 +116,27 @@ const Services = () => {
                     Get Started <ArrowRight size={16} />
                   </Link>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
       
       {/* CTA Section */}
       <section className="bottom-cta section-padding text-center gradient-bg">
-        <div className="container">
-          <h2>Not sure what you need?</h2>
-          <p>Schedule a free consultation and we'll audit your current digital presence.</p>
-          <div className="cta-actions">
+        <motion.div 
+          className="container"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+        >
+          <motion.h2 variants={fadeInUp}>Not sure what you need?</motion.h2>
+          <motion.p variants={fadeInUp}>Schedule a free consultation and we'll audit your current digital presence.</motion.p>
+          <motion.div className="cta-actions" variants={fadeInUp}>
             <Link to="/contact" className="btn btn-primary">Book Free Consultation</Link>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
     </div>
   );

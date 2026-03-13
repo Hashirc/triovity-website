@@ -1,0 +1,47 @@
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  background: var(--color-text-main);
+  color: white;
+  padding: 1.5rem 0;
+  position: relative;
+  display: flex;
+}
+
+/* Fallback to pure CSS for a smoother, guaranteed infinite loop */
+.marquee-track {
+  display: flex;
+  animation: marquee-scroll 30s linear infinite;
+  width: max-content;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 2rem;
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,255,255,0.5);
+  transition: all 0.3s ease;
+}
+
+.marquee-item:hover {
+  color: white;
+  -webkit-text-stroke: 0px white;
+  text-shadow: 0 0 10px rgba(255,255,255,0.8);
+}
+
+.marquee-item::after {
+  content: "✦";
+  margin-left: 2rem;
+  color: var(--color-primary-red);
+  -webkit-text-stroke: 0px;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); } 
+}

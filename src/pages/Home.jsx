@@ -1,6 +1,24 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, BarChart2, Globe, Megaphone, Smartphone, Star, CheckCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
+import AnimatedText from '../components/AnimatedText';
+import RotatingBadge from '../components/RotatingBadge';
+import Marquee from '../components/Marquee';
 import './Home.css';
+
+// Animation Variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2 }
+  }
+};
 
 const Home = () => {
   return (
@@ -8,43 +26,68 @@ const Home = () => {
       {/* Hero Section */}
       <section className="hero-section gradient-bg">
         <div className="container hero-container">
-          <div className="hero-content animate-fade-up">
-            <h1 className="hero-title">
-              Grow Your Business with <span className="text-highlight">Digital Marketing</span>
-            </h1>
-            <p className="hero-subtitle">
+          <motion.div 
+            className="hero-content"
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+          >
+            <motion.h1 className="hero-title" variants={fadeInUp}>
+              Grow Your Business with <br />
+              <span className="text-highlight">
+                <AnimatedText words={["Digital Marketing", "Web Development", "SEO Strategies", "Creative Design"]} />
+              </span>
+            </motion.h1>
+            <motion.p className="hero-subtitle" variants={fadeInUp}>
               Triovity is a premier digital marketing and website development agency. We transform your digital presence into a powerful growth engine.
-            </p>
-            <div className="hero-cta">
+            </motion.p>
+            <motion.div className="hero-cta" variants={fadeInUp}>
               <Link to="/contact" className="btn btn-primary">Get a Quote</Link>
               <Link to="/services" className="btn btn-outline">Our Services</Link>
-            </div>
-            <div className="hero-trust">
-              <div className="trust-item">
+            </motion.div>
+            <motion.div className="hero-trust" variants={staggerContainer}>
+              <motion.div className="trust-item" variants={fadeInUp}>
                 <CheckCircle size={20} className="text-highlight" />
                 <span>Data-Driven Strategies</span>
-              </div>
-              <div className="trust-item">
+              </motion.div>
+              <motion.div className="trust-item" variants={fadeInUp}>
                 <CheckCircle size={20} className="text-highlight" />
                 <span>Proven Results</span>
-              </div>
-            </div>
-          </div>
-          <div className="hero-image glass animate-fade-up" style={{ animationDelay: '0.2s' }}>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+          
+          <motion.div 
+            className="hero-image glass"
+            initial={{ opacity: 0, scale: 0.9, rotateX: 20 }}
+            animate={{ opacity: 1, scale: 1, rotateX: 0 }}
+            transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
+            style={{ perspective: 1000 }}
+          >
             {/* abstract illustration using css */}
             <div className="abstract-shape shape-1"></div>
             <div className="abstract-shape shape-2"></div>
             <div className="abstract-shape shape-3">
               <BarChart2 size={80} color="var(--color-primary-red)" />
             </div>
-          </div>
+            <RotatingBadge text="TRIOVITY SOLUTIONS • SEE A.I IN ACTION • " />
+          </motion.div>
         </div>
       </section>
 
+      {/* Marquee Section */}
+      <Marquee items={["UI/UX Design", "Web Development", "SEO Optimization", "Social Media", "Brand Strategy"]} />
+
       {/* Intro Section */}
       <section className="intro-section section-padding">
-        <div className="container intro-container">
-          <div className="intro-text">
+        <motion.div 
+          className="container intro-container"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+        >
+          <motion.div className="intro-text" variants={fadeInUp}>
             <h2>Who We Are</h2>
             <p>
               At Triovity, we believe in the power of digital transformation. Our agency partners with forward-thinking businesses to craft compelling digital experiences and drive measurable marketing results.
@@ -55,145 +98,128 @@ const Home = () => {
             <Link to="/about" className="link-with-icon">
               Learn more about our team <ArrowRight size={18} />
             </Link>
-          </div>
-          <div className="intro-stats">
-            <div className="stat-card glass">
-              <h3>20+</h3>
-              <p>Projects Delivered</p>
-            </div>
-            <div className="stat-card glass">
-              <h3>98%</h3>
-              <p>Client Retention</p>
-            </div>
-            <div className="stat-card glass">
-              <h3>1+</h3>
-              <p>Years Experience</p>
-            </div>
-            <div className="stat-card glass">
-              <h3>10+</h3>
-              <p>Happy Clients</p>
-            </div>
-          </div>
-        </div>
+          </motion.div>
+          <motion.div className="intro-stats" variants={staggerContainer}>
+            {[
+              { num: "20+", label: "Projects Delivered" },
+              { num: "98%", label: "Client Retention" },
+              { num: "1+", label: "Years Experience" },
+              { num: "10+", label: "Happy Clients" }
+            ].map((stat, i) => (
+              <motion.div key={i} className="stat-card glass" variants={fadeInUp} whileHover={{ y: -5, scale: 1.05 }}>
+                <h3>{stat.num}</h3>
+                <p>{stat.label}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Services Highlight Section */}
       <section className="services-highlight section-padding">
         <div className="container">
-          <div className="section-header text-center">
+          <motion.div 
+            className="section-header text-center"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+          >
             <h2>Our Core <span className="text-highlight">Services</span></h2>
             <p>Comprehensive digital solutions tailored to your business needs.</p>
-          </div>
+          </motion.div>
           
-          <div className="services-grid">
-            <div className="service-card glass">
-              <div className="service-icon-wrapper">
-                <Globe size={32} />
-              </div>
-              <h3>Website Development</h3>
-              <p>Custom, scalable, and responsive websites designed to convert visitors into customers.</p>
-              <Link to="/services" className="service-link">Read more <ArrowRight size={16} /></Link>
-            </div>
-            
-            <div className="service-card glass">
-              <div className="service-icon-wrapper">
-                <BarChart2 size={32} />
-              </div>
-              <h3>SEO Optimization</h3>
-              <p>Rank higher on Google and drive organic traffic with our data-backed SEO strategies.</p>
-              <Link to="/services" className="service-link">Read more <ArrowRight size={16} /></Link>
-            </div>
-            
-            <div className="service-card glass">
-              <div className="service-icon-wrapper">
-                <Megaphone size={32} />
-              </div>
-              <h3>Digital Marketing</h3>
-              <p>End-to-end marketing campaigns that maximize your ROI and brand visibility.</p>
-              <Link to="/services" className="service-link">Read more <ArrowRight size={16} /></Link>
-            </div>
-            
-            <div className="service-card glass">
-              <div className="service-icon-wrapper">
-                <Smartphone size={32} />
-              </div>
-              <h3>Social Media</h3>
-              <p>Engage your audience and build brand loyalty across all major social platforms.</p>
-              <Link to="/services" className="service-link">Read more <ArrowRight size={16} /></Link>
-            </div>
-          </div>
+          <motion.div 
+            className="services-grid"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            {[
+              { icon: Globe, title: "Website Development", desc: "Custom, scalable, and responsive websites designed to convert visitors into customers." },
+              { icon: BarChart2, title: "SEO Optimization", desc: "Rank higher on Google and drive organic traffic with our data-backed SEO strategies." },
+              { icon: Megaphone, title: "Digital Marketing", desc: "End-to-end marketing campaigns that maximize your ROI and brand visibility." },
+              { icon: Smartphone, title: "Social Media", desc: "Engage your audience and build brand loyalty across all major social platforms." }
+            ].map((srv, i) => (
+              <motion.div 
+                key={i} 
+                className="service-card glass" 
+                variants={fadeInUp}
+                whileHover={{ y: -10, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
+              >
+                <div className="service-icon-wrapper">
+                  <srv.icon size={32} />
+                </div>
+                <h3>{srv.title}</h3>
+                <p>{srv.desc}</p>
+                <Link to="/services" className="service-link">Read more <ArrowRight size={16} /></Link>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
       {/* Testimonials Section */}
       <section className="testimonials-section section-padding gradient-bg">
         <div className="container">
-          <div className="section-header text-center">
+          <motion.div 
+            className="section-header text-center"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+          >
             <h2>Client <span className="text-highlight">Testimonials</span></h2>
             <p>What our partners say about working with Triovity.</p>
-          </div>
+          </motion.div>
           
-          <div className="testimonials-grid">
-            <div className="testimonial-card glass">
-              <div className="stars">
-                <Star size={18} fill="currentColor" className="text-highlight" />
-                <Star size={18} fill="currentColor" className="text-highlight" />
-                <Star size={18} fill="currentColor" className="text-highlight" />
-                <Star size={18} fill="currentColor" className="text-highlight" />
-                <Star size={18} fill="currentColor" className="text-highlight" />
-              </div>
-              <p className="testimonial-text">"The social media campaigns they created for our brand were creative and highly engaging. Our Instagram followers doubled and our sales increased noticeably"</p>
-              <div className="testimonial-author">
-                <h4>Almadeena Restaurant</h4>
-                <p>Thalappara, Kottakkal</p>
-              </div>
-            </div>
-
-            <div className="testimonial-card glass">
-              <div className="stars">
-                <Star size={18} fill="currentColor" className="text-highlight" />
-                <Star size={18} fill="currentColor" className="text-highlight" />
-                <Star size={18} fill="currentColor" className="text-highlight" />
-                <Star size={18} fill="currentColor" className="text-highlight" />
-                <Star size={18} fill="currentColor" className="text-highlight" />
-              </div>
-              <p className="testimonial-text">"As a small automotive business owner, I needed an affordable but professional website. They delivered exactly that and also helped with marketing. Highly recommended!"</p>
-              <div className="testimonial-author">
-                <h4>MAK Automotive</h4>
-                <p>Puthanathani</p>
-              </div>
-            </div>
-            
-            <div className="testimonial-card glass">
-              <div className="stars">
-                <Star size={18} fill="currentColor" className="text-highlight" />
-                <Star size={18} fill="currentColor" className="text-highlight" />
-                <Star size={18} fill="currentColor" className="text-highlight" />
-                <Star size={18} fill="currentColor" className="text-highlight" />
-                <Star size={18} fill="currentColor" className="text-highlight" />
-              </div>
-              <p className="testimonial-text">"From logo design to website development, the entire process was smooth and professional. The team understood our vision and delivered beyond expectations.."</p>
-              <div className="testimonial-author">
-                <h4>Retro Ruchi</h4>
-                <p>Client</p>
-              </div>
-            </div>
-          </div>
+          <motion.div 
+            className="testimonials-grid"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={staggerContainer}
+          >
+            {[
+              { text: "\"The social media campaigns they created for our brand were creative and highly engaging. Our Instagram followers doubled and our sales increased noticeably\"", author: "Almadeena Restaurant", loc: "Thalappara, Kottakkal" },
+              { text: "\"As a small automotive business owner, I needed an affordable but professional website. They delivered exactly that and also helped with marketing. Highly recommended!\"", author: "MAK Automotive", loc: "Puthanathani" },
+              { text: "\"From logo design to website development, the entire process was smooth and professional. The team understood our vision and delivered beyond expectations..\"", author: "Retro Ruchi", loc: "Client" }
+            ].map((t, i) => (
+              <motion.div key={i} className="testimonial-card glass" variants={fadeInUp} whileHover={{ scale: 1.02 }}>
+                <div className="stars">
+                  {[...Array(5)].map((_, j) => <Star key={j} size={18} fill="currentColor" className="text-highlight" />)}
+                </div>
+                <p className="testimonial-text">{t.text}</p>
+                <div className="testimonial-author">
+                  <h4>{t.author}</h4>
+                  <p>{t.loc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="bottom-cta section-padding text-center">
-        <div className="container">
+        <motion.div 
+          className="container"
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
           <h2>Ready to <span className="text-highlight">Accelerate</span> Your Growth?</h2>
           <p>Let's discuss how we can help you achieve your business goals.</p>
           <div className="cta-actions">
             <Link to="/contact" className="btn btn-primary">Contact Us Today</Link>
           </div>
-        </div>
+        </motion.div>
       </section>
     </div>
   );
 };
 
 export default Home;
+

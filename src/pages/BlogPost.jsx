@@ -1,7 +1,22 @@
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Clock, User } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { blogPosts } from '../data/blogData';
 import './Blog.css'; // Reuse some Blog styles
+
+// Animation Variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2 }
+  }
+};
 
 const BlogPost = () => {
   const { id } = useParams();
@@ -18,14 +33,21 @@ const BlogPost = () => {
 
   return (
     <div className="blog-post-page pt-24 pb-16">
-      <div className="container max-w-4xl mx-auto px-4">
+      <motion.div 
+        className="container max-w-4xl mx-auto px-4"
+        initial="hidden"
+        animate="visible"
+        variants={staggerContainer}
+      >
         
-        <Link to="/blog" className="inline-flex items-center text-gray-400 hover:text-white mb-8 transition-colors">
-          <ArrowLeft size={20} className="mr-2" />
-          Back to all articles
-        </Link>
+        <motion.div variants={fadeInUp}>
+          <Link to="/blog" className="inline-flex items-center text-gray-400 hover:text-white mb-8 transition-colors">
+            <ArrowLeft size={20} className="mr-2" />
+            Back to all articles
+          </Link>
+        </motion.div>
         
-        <div className="blog-header mb-8">
+        <motion.div className="blog-header mb-8" variants={fadeInUp}>
           <div className="blog-category-badge mb-4 inline-block px-3 py-1 rounded-full text-sm font-semibold" style={{ background: post.gradient, color: 'white' }}>
             {post.category}
           </div>
@@ -41,14 +63,18 @@ const BlogPost = () => {
               {post.date}
             </span>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="blog-hero-image w-full h-[300px] md:h-[400px] rounded-2xl mb-12 flex items-center justify-center opacity-80" style={{ background: post.gradient }}>
+        <motion.div 
+          className="blog-hero-image w-full h-[300px] md:h-[400px] rounded-2xl mb-12 flex items-center justify-center opacity-80" 
+          style={{ background: post.gradient }}
+          variants={fadeInUp}
+        >
           {/* Abstract placeholder for article image */}
           <h2 className="text-white text-3xl font-bold opacity-30 px-6 text-center">{post.title}</h2>
-        </div>
+        </motion.div>
 
-        <div className="blog-content prose prose-invert max-w-none">
+        <motion.div className="blog-content prose prose-invert max-w-none" variants={fadeInUp}>
           <p className="text-xl text-gray-300 leading-relaxed mb-8 border-l-4 border-[#e63946] pl-6 italic">
             {post.excerpt}
           </p>
@@ -56,14 +82,17 @@ const BlogPost = () => {
           <div className="text-gray-300 leading-relaxed space-y-6 text-lg whitespace-pre-line">
             {post.content}
           </div>
-        </div>
+        </motion.div>
 
-        <div className="mt-16 pt-8 border-t border-gray-800 text-center">
+        <motion.div 
+          className="mt-16 pt-8 border-t border-gray-800 text-center"
+          variants={fadeInUp}
+        >
             <h3 className="text-2xl font-bold text-white mb-6">Enjoyed this article?</h3>
             <p className="text-gray-400 mb-8">Share it with your colleagues or read more on our blog.</p>
             <Link to="/blog" className="btn btn-primary">Read More Articles</Link>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };

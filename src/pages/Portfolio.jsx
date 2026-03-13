@@ -1,5 +1,20 @@
 import { ExternalLink, TrendingUp, Users, DollarSign } from 'lucide-react';
+import { motion } from 'framer-motion';
 import './Portfolio.css';
+
+// Animation Variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2 }
+  }
+};
 
 const caseStudies = [
   {
@@ -44,32 +59,58 @@ const Portfolio = () => {
     <div className="portfolio-page">
       {/* Page Header */}
       <section className="page-header text-center gradient-bg">
-        <div className="container">
-          <h1 className="animate-fade-up">Our <span className="text-highlight">Work</span></h1>
-          <p className="page-subtitle animate-fade-up" style={{ animationDelay: '0.2s' }}>
+        <motion.div 
+          className="container"
+          initial="hidden"
+          animate="visible"
+          variants={staggerContainer}
+        >
+          <motion.h1 variants={fadeInUp}>Our <span className="text-highlight">Work</span></motion.h1>
+          <motion.p className="page-subtitle" variants={fadeInUp}>
             Data-driven results and beautifully crafted digital experiences.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
       </section>
 
       {/* Case Studies Section */}
       <section className="case-studies section-padding">
         <div className="container">
-          <div className="section-header">
+          <motion.div 
+            className="section-header"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+          >
             <h2>Featured <span className="text-highlight">Case Studies</span></h2>
             <p>Real results from our integrated marketing campaigns.</p>
-          </div>
+          </motion.div>
 
-          <div className="case-studies-list">
+          <motion.div 
+            className="case-studies-list"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
             {caseStudies.map((study) => (
-              <div className="case-study-card glass" key={study.id}>
-                <div className="cs-visual" style={{ backgroundColor: study.color }}>
+              <motion.div 
+                className="case-study-card glass" 
+                key={study.id}
+                variants={fadeInUp}
+                whileHover={{ y: -5 }}
+              >
+                <motion.div 
+                  className="cs-visual" 
+                  style={{ backgroundColor: study.color }}
+                  whileHover={{ scale: 1.02 }}
+                >
                   <TrendingUp size={80} color="white" opacity={0.5} />
                   <div className="cs-overlay text-center">
                     <h3 className="text-white">{study.client}</h3>
                     <p className="text-white">{study.category}</p>
                   </div>
-                </div>
+                </motion.div>
                 
                 <div className="cs-content">
                   <div className="cs-tag">{study.category}</div>
@@ -88,37 +129,58 @@ const Portfolio = () => {
                     ))}
                   </div>
                   
-                  <button className="link-with-icon cs-btn">
+                  <motion.button 
+                    className="link-with-icon cs-btn"
+                    whileHover={{ x: 5 }}
+                  >
                     Read Full Case Study <ExternalLink size={16} />
-                  </button>
+                  </motion.button>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Projects Gallery */}
       <section className="project-gallery section-padding gradient-bg">
         <div className="container">
-          <div className="section-header text-center">
+          <motion.div 
+            className="section-header text-center"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+          >
             <h2>Latest <span className="text-highlight">Website Designs</span></h2>
             <p>A selection of custom web development and UI/UX projects.</p>
-          </div>
+          </motion.div>
 
-          <div className="gallery-grid">
+          <motion.div 
+            className="gallery-grid"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
             {galleryProjects.map((project) => (
-              <div className="gallery-item" key={project.id} style={{ background: project.bg }}>
+              <motion.div 
+                className="gallery-item" 
+                key={project.id} 
+                style={{ background: project.bg }}
+                variants={fadeInUp}
+                whileHover={{ scale: 1.05 }}
+              >
                 <div className="gallery-item-overlay">
                   <div className="gallery-content text-center text-white">
                     <h3 className="text-white">{project.name}</h3>
                     <p className="text-white">{project.tag}</p>
-                    <button className="btn btn-outline btn-gallery mt-2">View Live Site</button>
+                    <button className="btn btn-outline btn-gallery mt-2" style={{ borderColor: 'white', color: 'white' }}>View Live Site</button>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>
