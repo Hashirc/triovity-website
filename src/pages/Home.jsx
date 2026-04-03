@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, BarChart2, Globe, Megaphone, Smartphone, Star, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AnimatedText from '../components/AnimatedText';
-import RotatingBadge from '../components/RotatingBadge';
 import Marquee from '../components/Marquee';
 import './Home.css';
 
@@ -70,7 +69,6 @@ const Home = () => {
             <div className="abstract-shape shape-3">
               <BarChart2 size={80} color="var(--color-primary-red)" />
             </div>
-            <RotatingBadge text="TRIOVITY SOLUTIONS • SEE A.I IN ACTION • " />
           </motion.div>
         </div>
       </section>

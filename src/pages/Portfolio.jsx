@@ -1,57 +1,66 @@
-import { ExternalLink, TrendingUp, Users, DollarSign } from 'lucide-react';
+import { Instagram, ExternalLink, Image as ImageIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
 import './Portfolio.css';
 
+// Import Assets
+import carawan1 from '../assets/portfolio/carawan_collage_v3_grid_1.jpg';
+import carawan2 from '../assets/portfolio/carawan_collage_v3_grid_2.jpg';
+import mirable1 from '../assets/portfolio/mirable_collage_v3_grid_1.jpg';
+import mirable2 from '../assets/portfolio/mirable_collage_v3_grid_2.jpg';
+import pawpaths from '../assets/portfolio/pawpaths_collage_v3_grid.jpg';
+import rosticoco from '../assets/portfolio/rosticoco_collage_v3_grid.jpg';
+
 // Animation Variants
 const fadeInUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
 };
 
 const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.2 }
+    transition: { staggerChildren: 0.3 }
   }
 };
 
-const caseStudies = [
+const socialMediaClients = [
   {
-    id: 1,
-    client: "EcoLife Dynamics",
-    category: "SEO & Content Marketing",
-    title: "Tripling Organic Traffic in 6 Months",
-    description: "Through comprehensive technical SEO audits, keyword gap analysis, and a structured content strategy, we helped EcoLife Dynamics dominate search results for sustainable living products.",
-    metrics: [
-      { icon: <TrendingUp size={20} />, label: "315%", desc: "Organic Traffic" },
-      { icon: <Users size={20} />, label: "42%", desc: "Conversion Rate" },
-      { icon: <DollarSign size={20} />, label: "$2.1M", desc: "Added Revenue" }
-    ],
-    color: "#e63946"
+    id: "carawan",
+    name: "Carawan Sweets",
+    role: "Social Media Management",
+    description: "Elevating the digital presence of Carawan Sweets through vibrant, mouth-watering content and strategic social media engagement.",
+    images: [carawan1, carawan2],
+    color: "#e63946",
+    instagram: "https://www.instagram.com/carawan_sweets"
   },
   {
-    id: 2,
-    client: "TechFlow SaaS",
-    category: "Paid Media (PPC)",
-    title: "Scaling B2B Lead Gen with Google Ads",
-    description: "By restructuring their ad accounts, refining audience targeting, and optimizing landing pages, we significantly reduced their Cost Per Acquisition while scaling lead volume.",
-    metrics: [
-      { icon: <TrendingUp size={20} />, label: "250%", desc: "Lead Volume" },
-      { icon: <DollarSign size={20} />, label: "-45%", desc: "CPA" },
-      { icon: <Users size={20} />, label: "18%", desc: "Close Rate" }
-    ],
-    color: "#457b9d"
+    id: "mirable",
+    name: "Mirable Beauty Parlour",
+    role: "Brand Aesthetic & Marketing",
+    description: "Crafting a sophisticated and tranquil online aesthetic for Mirable Beauty Parlour, focusing on elegance and professional care.",
+    images: [mirable1, mirable2],
+    color: "#457b9d",
+    instagram: "https://www.instagram.com/mirable_beauty_parlor"
+  },
+  {
+    id: "pawpaths",
+    name: "Pawpaths Pets Relocation",
+    role: "Content Strategy",
+    description: "Showcasing the heartwarming success stories of pet relocations with a focus on trust, warmth, and global expertise.",
+    images: [pawpaths],
+    color: "#2a9d8f",
+    instagram: "https://www.instagram.com/pawpaths"
+  },
+  {
+    id: "rosticoco",
+    name: "Rosti Coco",
+    role: "Lifestyle Content Creation",
+    description: "Capturing the organic essence of Rosti Coco products with modern, lifestyle-oriented content and earthy textures.",
+    images: [rosticoco],
+    color: "#2b2d42",
+    instagram: "https://www.instagram.com/rosticoco"
   }
-];
-
-const galleryProjects = [
-  { id: 1, name: "Elevate E-Commerce", tag: "Web Development", bg: "linear-gradient(135deg, #1d3557 0%, #457b9d 100%)" },
-  { id: 2, name: "Nexus Fintech App", tag: "UI/UX Design", bg: "linear-gradient(135deg, #e63946 0%, #f4a261 100%)" },
-  { id: 3, name: "GreenEarth Portal", tag: "Custom CMS", bg: "linear-gradient(135deg, #2a9d8f 0%, #e9c46a 100%)" },
-  { id: 4, name: "Alpha Fitness App", tag: "Web App", bg: "linear-gradient(135deg, #2b2d42 0%, #8d99ae 100%)" },
-  { id: 5, name: "Stellar Real Estate", tag: "Web Development", bg: "linear-gradient(135deg, #023047 0%, #219ebc 100%)" },
-  { id: 6, name: "Crave Food Delivery", tag: "React SPA", bg: "linear-gradient(135deg, #d62828 0%, #f77f00 100%)" }
 ];
 
 const Portfolio = () => {
@@ -65,121 +74,81 @@ const Portfolio = () => {
           animate="visible"
           variants={staggerContainer}
         >
-          <motion.h1 variants={fadeInUp}>Our <span className="text-highlight">Work</span></motion.h1>
+          <motion.h1 variants={fadeInUp}>Social Media <span className="text-highlight">Showcase</span></motion.h1>
           <motion.p className="page-subtitle" variants={fadeInUp}>
-            Data-driven results and beautifully crafted digital experiences.
+            Graphic design and content creation that drives engagement and builds brands.
           </motion.p>
         </motion.div>
       </section>
 
-      {/* Case Studies Section */}
-      <section className="case-studies section-padding">
-        <div className="container">
-          <motion.div 
-            className="section-header"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-          >
-            <h2>Featured <span className="text-highlight">Case Studies</span></h2>
-            <p>Real results from our integrated marketing campaigns.</p>
-          </motion.div>
-
-          <motion.div 
-            className="case-studies-list"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            {caseStudies.map((study) => (
+      {/* Main Content: Client Sections */}
+      <div className="portfolio-showcase">
+        {socialMediaClients.map((client, index) => (
+          <section className={`client-section ${index % 2 === 1 ? 'reverse' : ''}`} key={client.id}>
+            <div className="container">
               <motion.div 
-                className="case-study-card glass" 
-                key={study.id}
-                variants={fadeInUp}
-                whileHover={{ y: -5 }}
+                className="client-content-grid"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={staggerContainer}
               >
-                <motion.div 
-                  className="cs-visual" 
-                  style={{ backgroundColor: study.color }}
-                  whileHover={{ scale: 1.02 }}
-                >
-                  <TrendingUp size={80} color="white" opacity={0.5} />
-                  <div className="cs-overlay text-center">
-                    <h3 className="text-white">{study.client}</h3>
-                    <p className="text-white">{study.category}</p>
-                  </div>
+                {/* Client Info */}
+                <motion.div className="client-info" variants={fadeInUp}>
+                  <span className="client-role" style={{ color: client.color }}>{client.role}</span>
+                  <h2 className="client-name">{client.name}</h2>
+                  <p className="client-description">{client.description}</p>
+                  <motion.a 
+                    href={client.instagram} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="btn btn-outline btn-insta"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    View on Instagram <Instagram size={18} className="ml-2" />
+                  </motion.a>
                 </motion.div>
-                
-                <div className="cs-content">
-                  <div className="cs-tag">{study.category}</div>
-                  <h3>{study.title}</h3>
-                  <p>{study.description}</p>
-                  
-                  <div className="cs-metrics">
-                    {study.metrics.map((metric, idx) => (
-                      <div className="metric-item" key={idx}>
-                        <div className="metric-icon">{metric.icon}</div>
-                        <div className="metric-details">
-                          <span className="metric-val">{metric.label}</span>
-                          <span className="metric-desc">{metric.desc}</span>
-                        </div>
-                      </div>
+
+                {/* Client Visual Showcase */}
+                <motion.div className="client-visuals" variants={fadeInUp}>
+                  <div className={`collage-grid images-${client.images.length}`}>
+                    {client.images.map((img, i) => (
+                      <motion.div 
+                        key={i} 
+                        className="collage-item glass"
+                        whileHover={{ scale: 1.02, zIndex: 10 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        <img src={img} alt={`${client.name} work ${i+1}`} loading="lazy" />
+                      </motion.div>
                     ))}
                   </div>
-                  
-                  <motion.button 
-                    className="link-with-icon cs-btn"
-                    whileHover={{ x: 5 }}
-                  >
-                    Read Full Case Study <ExternalLink size={16} />
-                  </motion.button>
-                </div>
+                </motion.div>
               </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+            </div>
+          </section>
+        ))}
+      </div>
 
-      {/* Projects Gallery */}
-      <section className="project-gallery section-padding gradient-bg">
+      {/* Bottom CTA */}
+      <section className="portfolio-footer section-padding text-center gradient-bg">
         <div className="container">
-          <motion.div 
-            className="section-header text-center"
-            initial="hidden"
-            whileInView="visible"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            variants={fadeInUp}
           >
-            <h2>Latest <span className="text-highlight">Website Designs</span></h2>
-            <p>A selection of custom web development and UI/UX projects.</p>
-          </motion.div>
-
-          <motion.div 
-            className="gallery-grid"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            {galleryProjects.map((project) => (
-              <motion.div 
-                className="gallery-item" 
-                key={project.id} 
-                style={{ background: project.bg }}
-                variants={fadeInUp}
-                whileHover={{ scale: 1.05 }}
-              >
-                <div className="gallery-item-overlay">
-                  <div className="gallery-content text-center text-white">
-                    <h3 className="text-white">{project.name}</h3>
-                    <p className="text-white">{project.tag}</p>
-                    <button className="btn btn-outline btn-gallery mt-2" style={{ borderColor: 'white', color: 'white' }}>View Live Site</button>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+            <h2>Want a Brand <span className="text-highlight">Identity</span> Like This?</h2>
+            <p>Let's craft your social media presence together.</p>
+            <motion.a 
+              href="/contact" 
+              className="btn btn-primary mt-6"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Start Your Project <ExternalLink size={20} className="ml-2" />
+            </motion.a>
           </motion.div>
         </div>
       </section>

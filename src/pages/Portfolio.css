@@ -1,223 +1,178 @@
-/* Portfolio Page Styles */
+/* Portfolio Page Styles - Social Media Showcase */
 
-.case-studies {
-  padding-bottom: 2rem;
+.portfolio-showcase {
+  background-color: var(--color-bg-main);
 }
 
-.case-studies-list {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
+.client-section {
+  padding: 8rem 0;
+  border-bottom: 1px solid var(--color-glass-border);
 }
 
-.case-study-card {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-radius: var(--border-radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
+.client-section.reverse .client-content-grid {
+  direction: ltr; /* Ensure text stays left-to-right */
 }
 
-/* Alternate reverse layout */
-.case-study-card:nth-child(even) .cs-visual {
+/* Alternate layout for sections */
+.client-section.reverse .client-info {
   order: 2;
 }
 
-.cs-visual {
-  display: flex;
-  justify-content: center;
+.client-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 4rem;
   align-items: center;
-  min-height: 400px;
-  position: relative;
 }
 
-.cs-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-}
-
-.text-white {
-  color: #fff !important;
-}
-
-.cs-content {
-  padding: 4rem 3rem;
+.client-info {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-}
-
-.cs-tag {
-  display: inline-block;
-  padding: 0.4rem 1rem;
-  background-color: var(--color-bg-off);
-  color: var(--color-text-main);
-  border-radius: 50px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  align-self: flex-start;
-}
-
-.cs-content h3 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-}
-
-.cs-content p {
-  font-size: 1.1rem;
-  margin-bottom: 2.5rem;
-}
-
-.cs-metrics {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  margin-bottom: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--color-glass-border);
 }
 
-.metric-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.8rem;
+.client-role {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
-.metric-icon {
-  color: var(--color-primary-red);
-  background-color: rgba(230, 57, 70, 0.1);
-  padding: 0.5rem;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.metric-details {
-  display: flex;
-  flex-direction: column;
-}
-
-.metric-val {
-  font-size: 1.5rem;
+.client-name {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 800;
+  line-height: 1.1;
   color: var(--color-text-main);
-  line-height: 1;
-  margin-bottom: 0.2rem;
+  margin: 0;
 }
 
-.metric-desc {
-  font-size: 0.85rem;
+.client-description {
+  font-size: 1.2rem;
+  line-height: 1.6;
   color: var(--color-text-light);
-  font-weight: 500;
+  max-width: 500px;
 }
 
-.cs-btn {
-  background: none;
-  border: none;
-  padding: 0;
-  font-size: 1.1rem;
-  cursor: pointer;
+.btn-insta {
   align-self: flex-start;
-}
-
-/* Gallery Projects */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-}
-
-.gallery-item {
-  height: 300px;
-  border-radius: var(--border-radius-lg);
-  position: relative;
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition);
-}
-
-.gallery-item:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-xl);
-}
-
-.gallery-item-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(11, 25, 44, 0.8);
-  opacity: 0;
-  transition: var(--transition);
+  margin-top: 1rem;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  border-color: var(--color-glass-border);
+  color: var(--color-text-main);
+}
+
+.btn-insta:hover {
+  background-color: var(--color-text-main);
+  color: var(--color-bg-main);
+  border-color: var(--color-text-main);
+}
+
+/* Visuals / Collage Styles */
+.client-visuals {
+  position: relative;
+}
+
+.collage-grid {
+  display: flex;
+  gap: 2rem;
+  perspective: 1000px;
+}
+
+.collage-item {
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  background-color: var(--color-bg-off);
+}
+
+.collage-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Layout for 1 image (Pawpaths, Rosti Coco) */
+.images-1 .collage-item {
+  width: 100%;
+  max-height: 700px;
+}
+
+/* Layout for 2 images (Carawan, Mirable) */
+.images-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
 }
 
-.gallery-item:hover .gallery-item-overlay {
-  opacity: 1;
+.images-2 .collage-item:nth-child(2) {
+  margin-top: 4rem; /* Staggered effect */
 }
 
-.gallery-content {
-  transform: translateY(20px);
-  transition: var(--transition);
+/* Footer Section */
+.portfolio-footer {
+  padding: 10rem 0;
 }
 
-.gallery-item:hover .gallery-content {
-  transform: translateY(0);
+.portfolio-footer h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 1.5rem;
 }
 
-.gallery-content h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+.ml-2 {
+  margin-left: 0.5rem;
 }
 
-.gallery-content p {
-  margin-bottom: 1rem;
-  opacity: 0.8;
+.mt-6 {
+  margin-top: 1.5rem;
 }
 
-.btn-gallery {
-  border-color: rgba(255, 255, 255, 0.5);
-  color: white;
-}
-
-.btn-gallery:hover {
-  background-color: white;
-  color: var(--color-primary-red);
-}
-
-.mt-2 {
-  margin-top: 1rem;
-}
-
-@media screen and (max-width: 992px) {
-  .case-study-card {
+/* Responsive Adjustments */
+@media screen and (max-width: 1100px) {
+  .client-content-grid {
     grid-template-columns: 1fr;
+    gap: 3rem;
   }
   
-  .case-study-card:nth-child(even) .cs-visual {
-    order: 0; /* Reset ordering for mobile */
+  .client-section {
+    padding: 5rem 0;
   }
   
-  .cs-visual {
-    min-height: 250px;
+  .client-info {
+    order: 1 !important;
+    text-align: center;
+    align-items: center;
+  }
+  
+  .client-visuals {
+    order: 2 !important;
+  }
+  
+  .client-description {
+    margin: 0 auto;
+  }
+  
+  .btn-insta {
+    align-self: center;
+  }
+
+  .images-2 .collage-item:nth-child(2) {
+    margin-top: 0;
+  }
+  
+  .collage-grid {
+    gap: 1rem;
   }
 }
 
 @media screen and (max-width: 576px) {
-  .cs-metrics {
+  .images-2 {
     grid-template-columns: 1fr;
-    gap: 1rem;
   }
   
-  .gallery-grid {
-    grid-template-columns: 1fr;
+  .client-name {
+    font-size: 2rem;
   }
 }
