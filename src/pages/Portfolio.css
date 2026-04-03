@@ -20,8 +20,8 @@
 
 .client-content-grid {
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 4rem;
+  grid-template-columns: 0.7fr 1.8fr;
+  gap: 5rem;
   align-items: center;
 }
 
@@ -94,10 +94,10 @@
   display: block;
 }
 
-/* Layout for 1 image (Pawpaths, Rosti Coco) */
+/* Layout for 1 image (All clients now have 1 image) */
 .images-1 .collage-item {
   width: 100%;
-  max-height: 700px;
+  max-height: 1000px;
 }
 
 /* Layout for 2 images (Carawan, Mirable) */

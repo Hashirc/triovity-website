@@ -30,7 +30,7 @@ const socialMediaClients = [
     name: "Carawan Sweets",
     role: "Social Media Management",
     description: "Elevating the digital presence of Carawan Sweets through vibrant, mouth-watering content and strategic social media engagement.",
-    images: [carawan1, carawan2],
+    images: [carawan1],
     color: "#e63946",
     instagram: "https://www.instagram.com/carawan_sweets"
   },
@@ -39,7 +39,7 @@ const socialMediaClients = [
     name: "Mirable Beauty Parlour",
     role: "Brand Aesthetic & Marketing",
     description: "Crafting a sophisticated and tranquil online aesthetic for Mirable Beauty Parlour, focusing on elegance and professional care.",
-    images: [mirable1, mirable2],
+    images: [mirable1],
     color: "#457b9d",
     instagram: "https://www.instagram.com/mirable_beauty_parlor"
   },
