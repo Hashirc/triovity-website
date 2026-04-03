@@ -1,5 +1,6 @@
-import { Instagram, ExternalLink, Image as ImageIcon } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { Instagram, ExternalLink, Image as ImageIcon, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import './Portfolio.css';
 
 // Import Assets
@@ -9,6 +10,9 @@ import mirable1 from '../assets/portfolio/mirable_collage_v3_grid_1.jpg';
 import mirable2 from '../assets/portfolio/mirable_collage_v3_grid_2.jpg';
 import pawpaths from '../assets/portfolio/pawpaths_collage_v3_grid.jpg';
 import rosticoco from '../assets/portfolio/rosticoco_collage_v3_grid.jpg';
+
+// Import Poster Data
+import postersData from '../data/postersData.json';
 
 // Animation Variants
 const fadeInUp = {
@@ -64,6 +68,11 @@ const socialMediaClients = [
 ];
 
 const Portfolio = () => {
+  const [activeModalClient, setActiveModalClient] = useState(null);
+
+  // Helper to get active client details
+  const currentModalDetails = socialMediaClients.find(c => c.id === activeModalClient);
+
   return (
     <div className="portfolio-page">
       {/* Page Header */}
@@ -98,16 +107,26 @@ const Portfolio = () => {
                   <span className="client-role" style={{ color: client.color }}>{client.role}</span>
                   <h2 className="client-name">{client.name}</h2>
                   <p className="client-description">{client.description}</p>
-                  <motion.a 
-                    href={client.instagram} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="btn btn-outline btn-insta"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    View on Instagram <Instagram size={18} className="ml-2" />
-                  </motion.a>
+                  <div className="client-buttons">
+                    <motion.button 
+                      onClick={() => setActiveModalClient(client.id)}
+                      className="btn btn-primary"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      See Full Posters <ImageIcon size={18} className="ml-2" />
+                    </motion.button>
+                    <motion.a 
+                      href={client.instagram} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="btn btn-outline btn-insta"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      View on Instagram <Instagram size={18} className="ml-2" />
+                    </motion.a>
+                  </div>
                 </motion.div>
 
                 {/* Client Visual Showcase */}
@@ -152,6 +171,59 @@ const Portfolio = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Poster Modal Overlay */}
+      <AnimatePresence>
+        {activeModalClient && (
+          <motion.div 
+            className="modal-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setActiveModalClient(null)}
+          >
+            <motion.div 
+              className="modal-content glass"
+              initial={{ y: 50, opacity: 0, scale: 0.95 }}
+              animate={{ y: 0, opacity: 1, scale: 1 }}
+              exit={{ y: 20, opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.3 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="modal-header">
+                <h2>{currentModalDetails?.name} <span className="text-highlight">Archive</span></h2>
+                <button className="modal-close" onClick={() => setActiveModalClient(null)}>
+                  <X size={28} />
+                </button>
+              </div>
+              
+              <div className="modal-body">
+                {postersData[activeModalClient] && postersData[activeModalClient].length > 0 ? (
+                  <div className="modal-poster-grid">
+                    {postersData[activeModalClient].map((posterUrl, idx) => (
+                      <motion.div 
+                        className="modal-poster-item" 
+                        key={idx}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: (idx % 4) * 0.1 }}
+                        whileHover={{ scale: 1.05, zIndex: 10 }}
+                      >
+                        <img src={posterUrl} alt={`${currentModalDetails?.name} Poster ${idx + 1}`} loading="lazy" />
+                      </motion.div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="p-8 text-center" style={{ color: 'var(--color-text-light)' }}>
+                    No posters available for this client.
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
