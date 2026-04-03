@@ -20,8 +20,8 @@
 
 .client-content-grid {
   display: grid;
-  grid-template-columns: 0.7fr 1.8fr;
-  gap: 5rem;
+  grid-template-columns: 0.6fr 2.4fr;
+  gap: 6rem;
   align-items: center;
 }
 
@@ -32,22 +32,22 @@
 }
 
 .client-role {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
 .client-name {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1;
   color: var(--color-text-main);
   margin: 0;
 }
 
 .client-description {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   line-height: 1.6;
   color: var(--color-text-light);
   max-width: 500px;
@@ -55,12 +55,15 @@
 
 .btn-insta {
   align-self: flex-start;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px;
   border-color: var(--color-glass-border);
   color: var(--color-text-main);
+  font-weight: 600;
 }
 
 .btn-insta:hover {
@@ -72,19 +75,21 @@
 /* Visuals / Collage Styles */
 .client-visuals {
   position: relative;
+  width: 100%;
 }
 
 .collage-grid {
   display: flex;
   gap: 2rem;
-  perspective: 1000px;
+  perspective: 1500px;
 }
 
 .collage-item {
+  width: 100%;
   border-radius: var(--border-radius-lg);
   overflow: hidden;
-  box-shadow: var(--shadow-xl);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   background-color: var(--color-bg-off);
 }
 
@@ -94,21 +99,15 @@
   display: block;
 }
 
-/* Layout for 1 image (All clients now have 1 image) */
+/* Layout for 1 image - Maximize size */
 .images-1 .collage-item {
   width: 100%;
-  max-height: 1000px;
+  max-height: none; /* Remove height restriction for maximum scale */
 }
 
-/* Layout for 2 images (Carawan, Mirable) */
+/* Cleanup unused styles */
 .images-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-}
-
-.images-2 .collage-item:nth-child(2) {
-  margin-top: 4rem; /* Staggered effect */
+  display: none;
 }
 
 /* Footer Section */
