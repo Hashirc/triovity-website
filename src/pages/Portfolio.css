@@ -11,6 +11,7 @@
 
 .client-section.reverse .client-content-grid {
   direction: ltr; /* Ensure text stays left-to-right */
+  grid-template-columns: 1.5fr 1fr; /* Image gets the bigger column, text gets the smaller */
 }
 
 /* Alternate layout for sections */
