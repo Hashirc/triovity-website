@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Instagram, ExternalLink, Image as ImageIcon, X } from 'lucide-react';
+import { useState, useCallback, useEffect } from 'react';
+import { Instagram, ExternalLink, Image as ImageIcon, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Portfolio.css';
 
@@ -69,9 +69,39 @@ const socialMediaClients = [
 
 const Portfolio = () => {
   const [activeModalClient, setActiveModalClient] = useState(null);
+  const [activePosterIndex, setActivePosterIndex] = useState(null);
 
   // Helper to get active client details
   const currentModalDetails = socialMediaClients.find(c => c.id === activeModalClient);
+
+  // Lightbox Navigation Functions
+  const handlePrevPoster = useCallback((e) => {
+    e.stopPropagation();
+    if (!activeModalClient || !postersData[activeModalClient]) return;
+    setActivePosterIndex((prev) => 
+      prev === 0 ? postersData[activeModalClient].length - 1 : prev - 1
+    );
+  }, [activeModalClient]);
+
+  const handleNextPoster = useCallback((e) => {
+    e.stopPropagation();
+    if (!activeModalClient || !postersData[activeModalClient]) return;
+    setActivePosterIndex((prev) => 
+      prev === postersData[activeModalClient].length - 1 ? 0 : prev + 1
+    );
+  }, [activeModalClient]);
+
+  // Handle Keyboard Navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (activePosterIndex === null) return;
+      if (e.key === 'ArrowLeft') handlePrevPoster(e);
+      if (e.key === 'ArrowRight') handleNextPoster(e);
+      if (e.key === 'Escape') setActivePosterIndex(null);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [activePosterIndex, handlePrevPoster, handleNextPoster]);
 
   return (
     <div className="portfolio-page">
@@ -204,12 +234,16 @@ const Portfolio = () => {
                       <motion.div 
                         className="modal-poster-item" 
                         key={idx}
+                        onClick={() => setActivePosterIndex(idx)}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: (idx % 4) * 0.1 }}
                         whileHover={{ scale: 1.05, zIndex: 10 }}
                       >
+                        <div className="poster-overlay">
+                          <span>View Full</span>
+                        </div>
                         <img src={posterUrl} alt={`${currentModalDetails?.name} Poster ${idx + 1}`} loading="lazy" />
                       </motion.div>
                     ))}
@@ -221,6 +255,49 @@ const Portfolio = () => {
                 )}
               </div>
             </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Lightbox Overlay (Single Fullscreen Poster View) */}
+      <AnimatePresence>
+        {activePosterIndex !== null && activeModalClient && (
+          <motion.div 
+            className="lightbox-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setActivePosterIndex(null)}
+          >
+            <button className="lightbox-close" onClick={() => setActivePosterIndex(null)}>
+              <X size={36} />
+            </button>
+            
+            <button className="lightbox-nav prev" onClick={handlePrevPoster}>
+              <ChevronLeft size={48} />
+            </button>
+            
+            <motion.div 
+              className="lightbox-image-container"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img 
+                src={postersData[activeModalClient][activePosterIndex]} 
+                alt={`${currentModalDetails?.name} Full Poster`} 
+                className="lightbox-image"
+              />
+              <div className="lightbox-counter">
+                {activePosterIndex + 1} / {postersData[activeModalClient].length}
+              </div>
+            </motion.div>
+
+            <button className="lightbox-nav next" onClick={handleNextPoster}>
+              <ChevronRight size={48} />
+            </button>
           </motion.div>
         )}
       </AnimatePresence>
