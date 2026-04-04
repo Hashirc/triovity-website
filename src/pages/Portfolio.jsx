@@ -36,7 +36,7 @@ const socialMediaClients = [
     description: "Elevating the digital presence of Carawan Sweets through vibrant, mouth-watering content and strategic social media engagement.",
     images: [carawan1],
     color: "#e63946",
-    instagram: "https://www.instagram.com/carawan_sweets"
+    instagram: "https://www.instagram.com/carawansweets?igsh=Ynd1eXJ3Njh1OWp3"
   },
   {
     id: "mirable",
@@ -45,7 +45,7 @@ const socialMediaClients = [
     description: "Crafting a sophisticated and tranquil online aesthetic for Mirable Beauty Parlour, focusing on elegance and professional care.",
     images: [mirable1],
     color: "#457b9d",
-    instagram: "https://www.instagram.com/mirable_beauty_parlor"
+    instagram: "https://www.instagram.com/mirabel_alain?igsh=MTAzZWhsdXh4aDRmZw%3D%3D"
   },
   {
     id: "pawpaths",
@@ -54,7 +54,7 @@ const socialMediaClients = [
     description: "Showcasing the heartwarming success stories of pet relocations with a focus on trust, warmth, and global expertise.",
     images: [pawpaths],
     color: "#2a9d8f",
-    instagram: "https://www.instagram.com/pawpaths"
+    instagram: "https://www.instagram.com/pawpathsae?igsh=cHI3Y2Jvbzk1NjN3"
   },
   {
     id: "rosticoco",
@@ -63,7 +63,7 @@ const socialMediaClients = [
     description: "Capturing the organic essence of Rosti Coco products with modern, lifestyle-oriented content and earthy textures.",
     images: [rosticoco],
     color: "#2b2d42",
-    instagram: "https://www.instagram.com/rosticoco"
+    instagram: "https://www.instagram.com/idukkigold.ae?igsh=MTFnbnJiMHc2OGM3Nw%3D%3D"
   }
 ];
 
