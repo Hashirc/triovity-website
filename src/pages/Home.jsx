@@ -66,23 +66,23 @@ const Home = () => {
             {/* Floating Card 1: Web Dev */}
             <div className="bento-card float-slow card-top-left glass">
               <div className="bento-header">
-                <div className="icon-box green">
-                  <Code size={20} />
+                <div className="icon-box red">
+                  <Code size={20} color="white" />
                 </div>
                 <span className="bento-title">Web Performance</span>
               </div>
               <div className="bento-body">
-                <div className="health-score text-highlight">100%</div>
+                <div className="health-score">100%</div>
                 <p>Site Health Score</p>
-                <div className="progress-bar-bg"><div className="progress-bar-fill green"></div></div>
+                <div className="progress-bar-bg"><div className="progress-bar-fill red"></div></div>
               </div>
             </div>
 
             {/* Floating Card 2: Marketing */}
             <div className="bento-card float-med card-center-right highlight-card">
               <div className="bento-header">
-                <div className="icon-box red">
-                  <TrendingUp size={24} color="white" />
+                <div className="icon-box green">
+                  <TrendingUp size={24} color="#2a9d8f" />
                 </div>
                 <span className="bento-title">Social Reach</span>
               </div>
@@ -102,16 +102,16 @@ const Home = () => {
             {/* Floating Card 3: SEO */}
             <div className="bento-card float-fast card-bottom-left glass">
               <div className="bento-header">
-                <div className="icon-box blue">
-                  <Target size={20} />
+                <div className="icon-box red">
+                  <Target size={20} color="white" />
                 </div>
                 <span className="bento-title">SEO Ranking</span>
               </div>
               <div className="bento-body row">
-                <div className="rank text-highlight">#1</div>
+                <div className="rank">#1</div>
                 <div className="rank-info">
                   <p>Global Search</p>
-                  <span className="trend up"><ArrowUpRight size={14} /> +12 positions</span>
+                  <span className="trend red"><ArrowUpRight size={14} /> +12 positions</span>
                 </div>
               </div>
             </div>

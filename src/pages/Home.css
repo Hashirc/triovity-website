@@ -146,13 +146,13 @@
   gap: 1rem;
 }
 
-.health-score { font-size: 2.5rem; font-weight: 800; line-height: 1; margin-top: 0.2rem; color: #2a9d8f; }
-.growth-metric { font-size: 3rem; font-weight: 800; line-height: 1; margin-top: 0.2rem; color: var(--color-primary-red); }
+.health-score { font-size: 2.5rem; font-weight: 800; line-height: 1; margin-top: 0.2rem; color: var(--color-primary-red); }
+.growth-metric { font-size: 3rem; font-weight: 800; line-height: 1; margin-top: 0.2rem; color: #2a9d8f; }
 .bento-subtitle { font-size: 0.85rem; color: var(--color-text-light); }
-.rank { font-size: 3rem; font-weight: 800; color: #457b9d; }
+.rank { font-size: 3rem; font-weight: 800; color: var(--color-primary-red); }
 .rank-info p { margin: 0; font-size: 0.9rem; font-weight: 600; }
 .trend { font-size: 0.8rem; display: flex; align-items: center; gap: 0.2rem; font-weight: 700; margin-top: 0.2rem; }
-.trend.up { color: #2a9d8f; }
+.trend.red { color: var(--color-primary-red); }
 
 .progress-bar-bg {
   width: 100%;
@@ -162,10 +162,10 @@
   overflow: hidden;
   margin-top: 0.5rem;
 }
-.progress-bar-fill.green {
+.progress-bar-fill.red {
   width: 100%;
   height: 100%;
-  background: #2a9d8f;
+  background: var(--color-primary-red);
 }
 
 /* Animated Chart Bars */
@@ -179,7 +179,7 @@
 
 .chart-bars .bar {
   flex: 1;
-  background: rgba(230, 57, 70, 0.2);
+  background: rgba(42, 157, 143, 0.2);
   border-radius: 4px 4px 0 0;
 }
 
@@ -189,8 +189,8 @@
 .chart-bars .bar.b4 { height: 75%; }
 .chart-bars .bar.b5 { 
   height: 100%; 
-  background: var(--color-primary-red); 
-  box-shadow: 0 0 15px rgba(230, 57, 70, 0.4);
+  background: #2a9d8f; 
+  box-shadow: 0 0 15px rgba(42, 157, 143, 0.4);
 }
 
 /* Intro Section */
