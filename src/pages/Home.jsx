@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, BarChart2, Globe, Megaphone, Smartphone, Star, CheckCircle } from 'lucide-react';
+import { ArrowRight, BarChart2, Globe, Megaphone, Smartphone, Star, CheckCircle, TrendingUp, Code, Target, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AnimatedText from '../components/AnimatedText';
 import Marquee from '../components/Marquee';
@@ -57,17 +57,63 @@ const Home = () => {
           </motion.div>
           
           <motion.div 
-            className="hero-image glass"
+            className="hero-dashboard-graphic"
             initial={{ opacity: 0, scale: 0.9, rotateX: 20 }}
             animate={{ opacity: 1, scale: 1, rotateX: 0 }}
             transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
             style={{ perspective: 1000 }}
           >
-            {/* abstract illustration using css */}
-            <div className="abstract-shape shape-1"></div>
-            <div className="abstract-shape shape-2"></div>
-            <div className="abstract-shape shape-3">
-              <BarChart2 size={80} color="var(--color-primary-red)" />
+            {/* Floating Card 1: Web Dev */}
+            <div className="bento-card float-slow card-top-left glass">
+              <div className="bento-header">
+                <div className="icon-box green">
+                  <Code size={20} />
+                </div>
+                <span className="bento-title">Web Performance</span>
+              </div>
+              <div className="bento-body">
+                <div className="health-score text-highlight">100%</div>
+                <p>Site Health Score</p>
+                <div className="progress-bar-bg"><div className="progress-bar-fill green"></div></div>
+              </div>
+            </div>
+
+            {/* Floating Card 2: Marketing */}
+            <div className="bento-card float-med card-center-right highlight-card">
+              <div className="bento-header">
+                <div className="icon-box red">
+                  <TrendingUp size={24} color="white" />
+                </div>
+                <span className="bento-title">Social Reach</span>
+              </div>
+              <div className="bento-body">
+                <div className="growth-metric">+147%</div>
+                <p className="bento-subtitle">Engagement Growth</p>
+                <div className="chart-bars">
+                  <span className="bar b1"></span>
+                  <span className="bar b2"></span>
+                  <span className="bar b3"></span>
+                  <span className="bar b4"></span>
+                  <span className="bar b5"></span>
+                </div>
+              </div>
+            </div>
+
+            {/* Floating Card 3: SEO */}
+            <div className="bento-card float-fast card-bottom-left glass">
+              <div className="bento-header">
+                <div className="icon-box blue">
+                  <Target size={20} />
+                </div>
+                <span className="bento-title">SEO Ranking</span>
+              </div>
+              <div className="bento-body row">
+                <div className="rank text-highlight">#1</div>
+                <div className="rank-info">
+                  <p>Global Search</p>
+                  <span className="trend up"><ArrowUpRight size={14} /> +12 positions</span>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
