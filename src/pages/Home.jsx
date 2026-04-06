@@ -64,54 +64,60 @@ const Home = () => {
             style={{ perspective: 1000 }}
           >
             {/* Floating Card 1: Web Dev */}
-            <div className="bento-card float-slow card-top-left glass">
-              <div className="bento-header">
-                <div className="icon-box red">
-                  <Code size={20} color="white" />
+            <div className="float-wrapper float-slow card-top-left">
+              <div className="bento-card glass theme-red">
+                <div className="bento-header">
+                  <div className="icon-box">
+                    <Code size={20} />
+                  </div>
+                  <span className="bento-title">Web Performance</span>
                 </div>
-                <span className="bento-title">Web Performance</span>
-              </div>
-              <div className="bento-body">
-                <div className="health-score">100%</div>
-                <p>Site Health Score</p>
-                <div className="progress-bar-bg"><div className="progress-bar-fill red"></div></div>
+                <div className="bento-body">
+                  <div className="health-score">100%</div>
+                  <p>Site Health Score</p>
+                  <div className="progress-bar-bg"><div className="progress-bar-fill"></div></div>
+                </div>
               </div>
             </div>
 
             {/* Floating Card 2: Marketing */}
-            <div className="bento-card float-med card-center-right highlight-card">
-              <div className="bento-header">
-                <div className="icon-box green">
-                  <TrendingUp size={24} color="#2a9d8f" />
+            <div className="float-wrapper float-med card-center-right highlight-card">
+              <div className="bento-card theme-green">
+                <div className="bento-header">
+                  <div className="icon-box">
+                    <TrendingUp size={24} />
+                  </div>
+                  <span className="bento-title">Social Reach</span>
                 </div>
-                <span className="bento-title">Social Reach</span>
-              </div>
-              <div className="bento-body">
-                <div className="growth-metric">+147%</div>
-                <p className="bento-subtitle">Engagement Growth</p>
-                <div className="chart-bars">
-                  <span className="bar b1"></span>
-                  <span className="bar b2"></span>
-                  <span className="bar b3"></span>
-                  <span className="bar b4"></span>
-                  <span className="bar b5"></span>
+                <div className="bento-body">
+                  <div className="growth-metric">+147%</div>
+                  <p className="bento-subtitle">Engagement Growth</p>
+                  <div className="chart-bars">
+                    <span className="bar b1"></span>
+                    <span className="bar b2"></span>
+                    <span className="bar b3"></span>
+                    <span className="bar b4"></span>
+                    <span className="bar b5"></span>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Floating Card 3: SEO */}
-            <div className="bento-card float-fast card-bottom-left glass">
-              <div className="bento-header">
-                <div className="icon-box red">
-                  <Target size={20} color="white" />
+            <div className="float-wrapper float-fast card-bottom-left">
+              <div className="bento-card glass theme-red">
+                <div className="bento-header">
+                  <div className="icon-box">
+                    <Target size={20} />
+                  </div>
+                  <span className="bento-title">SEO Ranking</span>
                 </div>
-                <span className="bento-title">SEO Ranking</span>
-              </div>
-              <div className="bento-body row">
-                <div className="rank">#1</div>
-                <div className="rank-info">
-                  <p>Global Search</p>
-                  <span className="trend red"><ArrowUpRight size={14} /> +12 positions</span>
+                <div className="bento-body row">
+                  <div className="rank">#1</div>
+                  <div className="rank-info">
+                    <p>Global Search</p>
+                    <span className="trend"><ArrowUpRight size={14} /> +12 positions</span>
+                  </div>
                 </div>
               </div>
             </div>
