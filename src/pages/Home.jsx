@@ -173,14 +173,22 @@ const Home = () => {
               Learn more about our team <ArrowRight size={18} />
             </Link>
           </motion.div>
-          <motion.div className="intro-stats" variants={staggerContainer}>
+          <motion.div className="intro-stats">
             {[
               { num: "20+", label: "Projects Delivered" },
               { num: "98%", label: "Client Retention" },
               { num: "1+", label: "Years Experience" },
               { num: "10+", label: "Happy Clients" }
             ].map((stat, i) => (
-              <motion.div key={i} className="stat-card glass" variants={fadeInUp} whileHover={{ y: -5, scale: 1.05 }}>
+              <motion.div 
+                key={i} 
+                className="stat-card glass" 
+                initial={{ opacity: 0, x: i % 2 === 0 ? -100 : 100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.8, delay: i * 0.2, type: "spring", stiffness: 50, damping: 15 }}
+                whileHover={{ y: -5, scale: 1.05 }}
+              >
                 <h3>{stat.num}</h3>
                 <p>{stat.label}</p>
               </motion.div>
