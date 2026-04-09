@@ -63,64 +63,85 @@ const Home = () => {
             transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
             style={{ perspective: 1000 }}
           >
-            {/* Floating Card 1: Web Dev */}
-            <div className="float-wrapper float-slow card-top-left">
-              <div className="bento-card glass theme-red">
-                <div className="bento-header">
-                  <div className="icon-box">
-                    <Code size={20} />
+            {/* Floating Card 1: Web Dev - Slides from Top */}
+            <motion.div 
+              className="card-top-left"
+              initial={{ y: -100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1, delay: 0.2, type: "spring", bounce: 0.4 }}
+            >
+              <div className="float-wrapper float-slow">
+                <div className="bento-card glass theme-red">
+                  <div className="bento-header">
+                    <div className="icon-box">
+                      <Code size={20} />
+                    </div>
+                    <span className="bento-title">Web Performance</span>
                   </div>
-                  <span className="bento-title">Web Performance</span>
-                </div>
-                <div className="bento-body">
-                  <div className="health-score">100%</div>
-                  <p>Site Health Score</p>
-                  <div className="progress-bar-bg"><div className="progress-bar-fill"></div></div>
+                  <div className="bento-body">
+                    <div className="health-score">100%</div>
+                    <p>Site Health Score</p>
+                    <div className="progress-bar-bg"><div className="progress-bar-fill"></div></div>
+                  </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            {/* Floating Card 2: Marketing */}
-            <div className="float-wrapper float-med card-center-right highlight-card">
-              <div className="bento-card theme-green">
-                <div className="bento-header">
-                  <div className="icon-box">
-                    <TrendingUp size={24} />
+            {/* Floating Card 2: Marketing - Slides from Right */}
+            <motion.div 
+              className="card-center-right highlight-card"
+              initial={{ x: 100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 1, delay: 0.4, type: "spring", bounce: 0.4 }}
+            >
+              <div className="float-wrapper float-med">
+                <div className="bento-card theme-green">
+                  <div className="bento-header">
+                    <div className="icon-box">
+                      <TrendingUp size={24} />
+                    </div>
+                    <span className="bento-title">Social Reach</span>
                   </div>
-                  <span className="bento-title">Social Reach</span>
-                </div>
-                <div className="bento-body">
-                  <div className="growth-metric">+147%</div>
-                  <p className="bento-subtitle">Engagement Growth</p>
-                  <div className="chart-bars">
-                    <span className="bar b1"></span>
-                    <span className="bar b2"></span>
-                    <span className="bar b3"></span>
-                    <span className="bar b4"></span>
-                    <span className="bar b5"></span>
+                  <div className="bento-body">
+                    <div className="growth-metric">+147%</div>
+                    <p className="bento-subtitle">Engagement Growth</p>
+                    <div className="chart-bars">
+                      <span className="bar b1"></span>
+                      <span className="bar b2"></span>
+                      <span className="bar b3"></span>
+                      <span className="bar b4"></span>
+                      <span className="bar b5"></span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            {/* Floating Card 3: SEO */}
-            <div className="float-wrapper float-fast card-bottom-left">
-              <div className="bento-card glass theme-red">
-                <div className="bento-header">
-                  <div className="icon-box">
-                    <Target size={20} />
+            {/* Floating Card 3: SEO - Slides from Left */}
+            <motion.div 
+              className="card-bottom-left"
+              initial={{ x: -100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 1, delay: 0.6, type: "spring", bounce: 0.4 }}
+            >
+              <div className="float-wrapper float-fast">
+                <div className="bento-card glass theme-red">
+                  <div className="bento-header">
+                    <div className="icon-box">
+                      <Target size={20} />
+                    </div>
+                    <span className="bento-title">SEO Ranking</span>
                   </div>
-                  <span className="bento-title">SEO Ranking</span>
-                </div>
-                <div className="bento-body row">
-                  <div className="rank">#1</div>
-                  <div className="rank-info">
-                    <p>Global Search</p>
-                    <span className="trend"><ArrowUpRight size={14} /> +12 positions</span>
+                  <div className="bento-body row">
+                    <div className="rank">#1</div>
+                    <div className="rank-info">
+                      <p>Global Search</p>
+                      <span className="trend"><ArrowUpRight size={14} /> +12 positions</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
