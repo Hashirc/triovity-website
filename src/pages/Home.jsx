@@ -68,7 +68,7 @@ const Home = () => {
               className="card-top-left"
               initial={{ y: -100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1, delay: 0.2, type: "spring", bounce: 0.4 }}
+              transition={{ duration: 1.2, delay: 1.2, type: "spring", bounce: 0.4 }}
             >
               <div className="float-wrapper float-slow">
                 <div className="bento-card glass theme-red">
@@ -92,7 +92,7 @@ const Home = () => {
               className="card-center-right highlight-card"
               initial={{ x: 100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 1, delay: 0.4, type: "spring", bounce: 0.4 }}
+              transition={{ duration: 1.2, delay: 1.6, type: "spring", bounce: 0.4 }}
             >
               <div className="float-wrapper float-med">
                 <div className="bento-card theme-green">
@@ -122,7 +122,7 @@ const Home = () => {
               className="card-bottom-left"
               initial={{ x: -100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 1, delay: 0.6, type: "spring", bounce: 0.4 }}
+              transition={{ duration: 1.2, delay: 2.0, type: "spring", bounce: 0.4 }}
             >
               <div className="float-wrapper float-fast">
                 <div className="bento-card glass theme-red">
