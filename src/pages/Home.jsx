@@ -66,10 +66,10 @@ const Home = () => {
             {/* Floating Card 1: Web Dev - Slides from Top */}
             <motion.div 
               className="card-top-left"
-              initial={{ y: -100, opacity: 0 }}
+              initial={{ y: -250, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               whileHover={{ zIndex: 100, scale: 1.05 }}
-              transition={{ duration: 1.2, delay: 1.2, type: "spring", bounce: 0.4 }}
+              transition={{ duration: 1.5, delay: 1.2, type: "spring", bounce: 0.4 }}
             >
               <div className="float-wrapper float-slow">
                 <div className="bento-card glass theme-red">
@@ -91,10 +91,10 @@ const Home = () => {
             {/* Floating Card 2: Marketing - Slides from Right */}
             <motion.div 
               className="card-center-right highlight-card"
-              initial={{ x: 100, opacity: 0 }}
+              initial={{ x: 250, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               whileHover={{ zIndex: 100, scale: 1.05 }}
-              transition={{ duration: 1.2, delay: 1.6, type: "spring", bounce: 0.4 }}
+              transition={{ duration: 1.5, delay: 1.6, type: "spring", bounce: 0.4 }}
             >
               <div className="float-wrapper float-med">
                 <div className="bento-card theme-green">
@@ -122,10 +122,10 @@ const Home = () => {
             {/* Floating Card 3: SEO - Slides from Left */}
             <motion.div 
               className="card-bottom-left"
-              initial={{ x: -100, opacity: 0 }}
+              initial={{ x: -250, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               whileHover={{ zIndex: 100, scale: 1.05 }}
-              transition={{ duration: 1.2, delay: 2.0, type: "spring", bounce: 0.4 }}
+              transition={{ duration: 1.5, delay: 2.0, type: "spring", bounce: 0.4 }}
             >
               <div className="float-wrapper float-fast">
                 <div className="bento-card glass theme-red">
@@ -183,10 +183,10 @@ const Home = () => {
               <motion.div 
                 key={i} 
                 className="stat-card glass" 
-                initial={{ opacity: 0, x: i % 2 === 0 ? -100 : 100 }}
+                initial={{ opacity: 0, x: i % 2 === 0 ? -200 : 200 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.8, delay: i * 0.2, type: "spring", stiffness: 50, damping: 15 }}
+                transition={{ duration: 1, delay: i * 0.4, type: "spring", stiffness: 50, damping: 15 }}
                 whileHover={{ y: -5, scale: 1.05 }}
               >
                 <h3>{stat.num}</h3>
