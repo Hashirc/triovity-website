@@ -213,10 +213,6 @@ const Home = () => {
           
           <motion.div 
             className="services-grid"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
           >
             {[
               { icon: Globe, title: "Website Development", desc: "Custom, scalable, and responsive websites designed to convert visitors into customers." },
@@ -227,7 +223,10 @@ const Home = () => {
               <motion.div 
                 key={i} 
                 className="service-card glass" 
-                variants={fadeInUp}
+                initial={{ opacity: 0, x: i % 2 === 0 ? -200 : 200 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 1, delay: i * 0.4, type: "spring", stiffness: 50, damping: 15 }}
                 whileHover={{ y: -10, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
               >
                 <div className="service-icon-wrapper">
