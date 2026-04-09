@@ -68,6 +68,7 @@ const Home = () => {
               className="card-top-left"
               initial={{ y: -100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
+              whileHover={{ zIndex: 100, scale: 1.05 }}
               transition={{ duration: 1.2, delay: 1.2, type: "spring", bounce: 0.4 }}
             >
               <div className="float-wrapper float-slow">
@@ -92,6 +93,7 @@ const Home = () => {
               className="card-center-right highlight-card"
               initial={{ x: 100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
+              whileHover={{ zIndex: 100, scale: 1.05 }}
               transition={{ duration: 1.2, delay: 1.6, type: "spring", bounce: 0.4 }}
             >
               <div className="float-wrapper float-med">
@@ -122,6 +124,7 @@ const Home = () => {
               className="card-bottom-left"
               initial={{ x: -100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
+              whileHover={{ zIndex: 100, scale: 1.05 }}
               transition={{ duration: 1.2, delay: 2.0, type: "spring", bounce: 0.4 }}
             >
               <div className="float-wrapper float-fast">

@@ -75,11 +75,10 @@
 }
 
 .float-wrapper:hover {
-  z-index: 50; /* Bring front on hover */
+  cursor: pointer;
 }
 
 .float-wrapper:hover .bento-card {
-  transform: scale(1.08);
   box-shadow: 0 30px 60px rgba(0,0,0,0.4);
 }
 
