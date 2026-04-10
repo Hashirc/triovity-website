@@ -105,39 +105,44 @@ const Contact = () => {
             {/* Contact Form */}
             <motion.div className="contact-form-panel" variants={slideInRight}>
               <h2>Send Us a Message</h2>
-              <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
+              <form 
+                className="contact-form" 
+                action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfx2x48fAbs1k4SZGWt1TptAeOFVWDwi3nOZR2vecNyssxn2Q/formResponse"
+                method="POST"
+                target="_self"
+              >
                 <div className="form-row">
                   <div className="form-group">
                     <label htmlFor="name">Full Name</label>
-                    <input type="text" id="name" placeholder="John Doe" required />
+                    <input type="text" id="name" name="entry.452743347" placeholder="John Doe" required />
                   </div>
                   <div className="form-group">
                     <label htmlFor="phone">Phone Number</label>
-                    <input type="tel" id="phone" placeholder="+1 (555) 000-0000" />
+                    <input type="tel" id="phone" name="entry.1579664154" placeholder="+91 000-0000" />
                   </div>
                 </div>
                 
                 <div className="form-group">
                   <label htmlFor="email">Email Address</label>
-                  <input type="email" id="email" placeholder="john@company.com" required />
+                  <input type="email" id="email" name="entry.1047509203" placeholder="john@company.com" required />
                 </div>
                 
                 <div className="form-group">
                   <label htmlFor="service">Interested Service</label>
-                  <select id="service" required defaultValue="">
+                  <select id="service" name="entry.1381205668" required defaultValue="">
                     <option value="" disabled>Select a Service</option>
-                    <option value="digital-marketing">Digital Marketing</option>
-                    <option value="web-dev">Website Development</option>
-                    <option value="seo">SEO Optimization</option>
-                    <option value="social-media">Social Media</option>
-                    <option value="ppc">PPC & Google Ads</option>
-                    <option value="other">Other</option>
+                    <option value="Digital Marketing">Digital Marketing</option>
+                    <option value="Website Development">Website Development</option>
+                    <option value="SEO Optimization">SEO Optimization</option>
+                    <option value="Social Media">Social Media</option>
+                    <option value="PPC & Google Ads">PPC & Google Ads</option>
+                    <option value="Other">Other</option>
                   </select>
                 </div>
                 
                 <div className="form-group">
                   <label htmlFor="message">Your Message</label>
-                  <textarea id="message" rows="5" placeholder="Tell us about your project or goals..." required></textarea>
+                  <textarea id="message" name="entry.134875345" rows="5" placeholder="Tell us about your project or goals..." required></textarea>
                 </div>
                 
                 <motion.button 
