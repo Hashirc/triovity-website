@@ -1,5 +1,6 @@
-import { MapPin, Phone, Mail, Facebook, Twitter, Instagram, Linkedin, Send } from 'lucide-react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { MapPin, Phone, Mail, Facebook, Twitter, Instagram, Linkedin, Send, CheckCircle } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import './Contact.css';
 
 // Animation Variants
@@ -27,6 +28,32 @@ const slideInRight = {
 };
 
 const Contact = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.target);
+    const googleFormUrl = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfx2x48fAbs1k4SZGWt1TptAeOFVWDwi3nOZR2vecNyssxn2Q/formResponse";
+
+    try {
+      await fetch(googleFormUrl, {
+        method: "POST",
+        body: formData,
+        mode: "no-cors",
+      });
+      // In no-cors mode, we won't see the response, but we assume success if no reach error
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error("Submission failed:", error);
+      alert("Something went wrong. Please try again or email us directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="contact-page">
       {/* Page Header */}
@@ -102,58 +129,89 @@ const Contact = () => {
               </div>
             </motion.div>
             
-            {/* Contact Form */}
+            {/* Contact Form OR Success Message */}
             <motion.div className="contact-form-panel" variants={slideInRight}>
-              <h2>Send Us a Message</h2>
-              <form 
-                className="contact-form" 
-                action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfx2x48fAbs1k4SZGWt1TptAeOFVWDwi3nOZR2vecNyssxn2Q/formResponse"
-                method="POST"
-                target="_self"
-              >
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="name">Full Name</label>
-                    <input type="text" id="name" name="entry.452743347" placeholder="John Doe" required />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="entry.1579664154" placeholder="+91 000-0000" />
-                  </div>
-                </div>
-                
-                <div className="form-group">
-                  <label htmlFor="email">Email Address</label>
-                  <input type="email" id="email" name="entry.1047509203" placeholder="john@company.com" required />
-                </div>
-                
-                <div className="form-group">
-                  <label htmlFor="service">Interested Service</label>
-                  <select id="service" name="entry.1381205668" required defaultValue="">
-                    <option value="" disabled>Select a Service</option>
-                    <option value="Digital Marketing">Digital Marketing</option>
-                    <option value="Website Development">Website Development</option>
-                    <option value="SEO Optimization">SEO Optimization</option>
-                    <option value="Social Media">Social Media</option>
-                    <option value="PPC & Google Ads">PPC & Google Ads</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-                
-                <div className="form-group">
-                  <label htmlFor="message">Your Message</label>
-                  <textarea id="message" name="entry.134875345" rows="5" placeholder="Tell us about your project or goals..." required></textarea>
-                </div>
-                
-                <motion.button 
-                  type="submit" 
-                  className="btn btn-primary btn-submit"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Send Message <Send size={18} />
-                </motion.button>
-              </form>
+              <AnimatePresence mode="wait">
+                {!isSubmitted ? (
+                  <motion.div 
+                    key="form"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <h2>Send Us a Message</h2>
+                    <form 
+                      className="contact-form" 
+                      onSubmit={handleSubmit}
+                    >
+                      <div className="form-row">
+                        <div className="form-group">
+                          <label htmlFor="name">Full Name</label>
+                          <input type="text" id="name" name="entry.452743347" placeholder="John Doe" required />
+                        </div>
+                        <div className="form-group">
+                          <label htmlFor="phone">Phone Number</label>
+                          <input type="tel" id="phone" name="entry.1579664154" placeholder="+91 000-0000" />
+                        </div>
+                      </div>
+                      
+                      <div className="form-group">
+                        <label htmlFor="email">Email Address</label>
+                        <input type="email" id="email" name="entry.1047509203" placeholder="john@company.com" required />
+                      </div>
+                      
+                      <div className="form-group">
+                        <label htmlFor="service">Interested Service</label>
+                        <select id="service" name="entry.1381205668" required defaultValue="">
+                          <option value="" disabled>Select a Service</option>
+                          <option value="Digital Marketing">Digital Marketing</option>
+                          <option value="Website Development">Website Development</option>
+                          <option value="SEO Optimization">SEO Optimization</option>
+                          <option value="Social Media">Social Media</option>
+                          <option value="PPC & Google Ads">PPC & Google Ads</option>
+                          <option value="Other">Other</option>
+                        </select>
+                      </div>
+                      
+                      <div className="form-group">
+                        <label htmlFor="message">Your Message</label>
+                        <textarea id="message" name="entry.134875345" rows="5" placeholder="Tell us about your project or goals..." required></textarea>
+                      </div>
+                      
+                      <motion.button 
+                        type="submit" 
+                        className={`btn btn-primary btn-submit ${isSubmitting ? 'loading' : ''}`}
+                        disabled={isSubmitting}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        {isSubmitting ? "Sending..." : "Send Message"} <Send size={18} />
+                      </motion.button>
+                    </form>
+                  </motion.div>
+                ) : (
+                  <motion.div 
+                    key="success"
+                    className="success-message"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                  >
+                    <div className="success-icon">
+                      <CheckCircle size={80} />
+                    </div>
+                    <h2>Message Sent!</h2>
+                    <p>Thank you for reaching out to Triovity. We have received your message and our team will get back to you shortly.</p>
+                    <button 
+                      className="btn btn-outline" 
+                      onClick={() => setIsSubmitted(false)}
+                    >
+                      Send Another Message
+                    </button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           </motion.div>
         </div>
