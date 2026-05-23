@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, BarChart2, Globe, Megaphone, Smartphone, Star, CheckCircle, TrendingUp, Code, Target, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import AnimatedText from '../components/AnimatedText';
-import Marquee from '../components/Marquee';
+import AnimatedText from '../../components/animated-text';
+import Marquee from '../../components/marquee/marquee';
 import './Home.css';
 
 // Animation Variants

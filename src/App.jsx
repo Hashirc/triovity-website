@@ -1,13 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import Home from './pages/Home'
-import About from './pages/About'
-import Services from './pages/Services'
-import Portfolio from './pages/Portfolio'
-import Blog from './pages/Blog'
-import BlogPost from './pages/BlogPost'
-import Contact from './pages/Contact'
+import Home from './pages/home/home.jsx'
+import About from './pages/about/About.jsx'
+import Services from './pages/services/Services.jsx'
+import Portfolio from './pages/portfolio/Portfolio.jsx'
+import Blog from './pages/blog/Blog.jsx'
+import BlogPost from './pages/blog-detail/BlogPost.jsx'
+import Contact from './pages/contact/Contact.jsx'
+import Login from './pages/auth/Login.jsx'
+import Dashboard from './pages/dashboard/Dashboard.jsx'
 
 function App() {
   return (
@@ -22,7 +24,8 @@ function App() {
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<BlogPost />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </main>
         <Footer />
