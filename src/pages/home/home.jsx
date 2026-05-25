@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, BarChart2, Globe, Megaphone, Smartphone, Star, CheckCircle, TrendingUp, Code, Target, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import AnimatedText from '../../components/animated-text';
 import Marquee from '../../components/marquee/marquee';
 import './Home.css';
@@ -20,6 +21,7 @@ const staggerContainer = {
 };
 
 const Home = () => {
+  const [activeCard, setActiveCard] = useState(null);
   return (
     <div className="home-page">
       {/* Hero Section */}
@@ -67,9 +69,16 @@ const Home = () => {
             <motion.div 
               className="card-top-left"
               initial={{ y: -250, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              whileHover={{ zIndex: 100, scale: 1.05 }}
+              animate={{ 
+                y: 0, 
+                opacity: 1, 
+                scale: activeCard === 1 ? 1.1 : 1,
+                zIndex: activeCard === 1 ? 50 : (activeCard ? 5 : 10)
+              }}
+              whileHover={{ scale: activeCard === 1 ? 1.1 : 1.05 }}
+              onClick={() => setActiveCard(activeCard === 1 ? null : 1)}
               transition={{ duration: 1.5, delay: 1.2, type: "spring", bounce: 0.4 }}
+              style={{ cursor: 'pointer', perspective: 1000 }}
             >
               <div className="float-wrapper float-slow">
                 <div className="bento-card glass theme-red">
@@ -92,9 +101,16 @@ const Home = () => {
             <motion.div 
               className="card-center-right highlight-card"
               initial={{ x: 250, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              whileHover={{ zIndex: 100, scale: 1.05 }}
+              animate={{ 
+                x: 0, 
+                opacity: 1, 
+                scale: activeCard === 2 ? 1.1 : 1,
+                zIndex: activeCard === 2 ? 50 : (activeCard ? 5 : 10)
+              }}
+              whileHover={{ scale: activeCard === 2 ? 1.1 : 1.05 }}
+              onClick={() => setActiveCard(activeCard === 2 ? null : 2)}
               transition={{ duration: 1.5, delay: 1.6, type: "spring", bounce: 0.4 }}
+              style={{ cursor: 'pointer', perspective: 1000 }}
             >
               <div className="float-wrapper float-med">
                 <div className="bento-card theme-green">
@@ -123,9 +139,16 @@ const Home = () => {
             <motion.div 
               className="card-bottom-left"
               initial={{ x: -250, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              whileHover={{ zIndex: 100, scale: 1.05 }}
+              animate={{ 
+                x: 0, 
+                opacity: 1, 
+                scale: activeCard === 3 ? 1.1 : 1,
+                zIndex: activeCard === 3 ? 50 : (activeCard ? 5 : 10)
+              }}
+              whileHover={{ scale: activeCard === 3 ? 1.1 : 1.05 }}
+              onClick={() => setActiveCard(activeCard === 3 ? null : 3)}
               transition={{ duration: 1.5, delay: 2.0, type: "spring", bounce: 0.4 }}
+              style={{ cursor: 'pointer', perspective: 1000 }}
             >
               <div className="float-wrapper float-fast">
                 <div className="bento-card glass theme-red">
