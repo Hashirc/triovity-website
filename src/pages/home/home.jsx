@@ -86,7 +86,7 @@ const Home = () => {
               style={{ cursor: 'pointer', perspective: 1000, touchAction: 'manipulation' }}
             >
               <div className="float-wrapper float-slow">
-                <div className="bento-card glass theme-red">
+                <div className={`bento-card glass theme-red ${activeCard === 1 ? 'active' : ''}`}>
                   <div className="bento-header">
                     <div className="icon-box">
                       <Code size={20} />
@@ -119,7 +119,7 @@ const Home = () => {
               style={{ cursor: 'pointer', perspective: 1000, touchAction: 'manipulation' }}
             >
               <div className="float-wrapper float-med">
-                <div className="bento-card theme-green">
+                <div className={`bento-card theme-green ${activeCard === 2 ? 'active' : ''}`}>
                   <div className="bento-header">
                     <div className="icon-box">
                       <TrendingUp size={24} />
@@ -158,7 +158,7 @@ const Home = () => {
               style={{ cursor: 'pointer', perspective: 1000, touchAction: 'manipulation' }}
             >
               <div className="float-wrapper float-fast">
-                <div className="bento-card glass theme-red">
+                <div className={`bento-card glass theme-red ${activeCard === 3 ? 'active' : ''}`}>
                   <div className="bento-header">
                     <div className="icon-box">
                       <Target size={20} />
