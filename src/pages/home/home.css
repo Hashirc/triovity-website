@@ -6,6 +6,7 @@
   min-height: 90vh;
   display: flex;
   align-items: center;
+  overflow: visible;
 }
 
 .hero-container {
@@ -13,6 +14,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
+  overflow: visible;
 }
 
 .hero-title {
@@ -67,6 +69,14 @@
 .float-med { animation: floatY 4.5s ease-in-out infinite reverse; }
 .float-fast { animation: floatY 3.5s ease-in-out infinite; }
 
+@media screen and (max-width: 768px) {
+  .float-slow,
+  .float-med,
+  .float-fast {
+    animation: none;
+  }
+}
+
 .float-wrapper {
   position: relative;
   width: 100%;
@@ -106,6 +116,8 @@
   left: 15%;
   width: 240px;
   z-index: 10;
+  pointer-events: auto;
+  touch-action: manipulation;
 }
 
 .card-center-right {
@@ -114,6 +126,8 @@
   right: -15%;
   width: 260px;
   z-index: 10;
+  pointer-events: auto;
+  touch-action: manipulation;
 }
 
 .card-bottom-left {
@@ -122,6 +136,8 @@
   left: 30%;
   width: 240px;
   z-index: 10;
+  pointer-events: auto;
+  touch-action: manipulation;
 }
 
 /* Card Internals */
@@ -344,12 +360,13 @@
   .hero-dashboard-graphic {
     height: 420px;
     order: -1;
-    transform: scale(0.85); /* slightly scale down to perfectly fit on tablet/small screens */
+    transform: scale(0.85);
+    overflow: visible;
   }
   
-  .card-top-left { left: 0%; top: 5%; }
-  .card-center-right { right: 0%; top: 35%; }
-  .card-bottom-left { left: 5%; bottom: -5%; }
+  .card-top-left { left: 10%; top: 0%; width: 200px; }
+  .card-center-right { right: 5%; top: 40%; width: 200px; }
+  .card-bottom-left { left: 15%; bottom: 5%; width: 200px; }
   
   .hero-content {
     text-align: center;
@@ -364,7 +381,48 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  .hero-dashboard-graphic {
+    height: 380px;
+    transform: scale(0.75);
+    overflow: visible;
+  }
+  
+  .card-top-left { left: 5%; top: -10%; width: 180px; }
+  .card-center-right { right: 0%; top: 35%; width: 180px; }
+  .card-bottom-left { left: 10%; bottom: 10%; width: 180px; }
+  
+  .bento-card {
+    padding: 1.2rem;
+  }
+  
+  .health-score, .growth-metric, .rank { font-size: 2rem; }
+  .bento-title { font-size: 0.85rem; }
+}
+
 @media screen and (max-width: 576px) {
+  .hero-dashboard-graphic {
+    height: 300px;
+    transform: scale(0.65);
+    overflow: visible;
+  }
+  
+  .card-top-left { 
+    left: -5%; 
+    top: -15%; 
+    width: 160px; 
+  }
+  .card-center-right { 
+    right: -10%; 
+    top: 30%; 
+    width: 160px; 
+  }
+  .card-bottom-left { 
+    left: 5%; 
+    bottom: 15%; 
+    width: 160px; 
+  }
+  
   .hero-cta {
     flex-direction: column;
   }
@@ -378,4 +436,13 @@
   .intro-stats {
     grid-template-columns: 1fr;
   }
+  
+  .bento-card {
+    padding: 1rem;
+  }
+  
+  .health-score, .growth-metric, .rank { font-size: 1.8rem; }
+  .bento-title { font-size: 0.8rem; }
+  .bento-header { gap: 0.5rem; }
+  .icon-box { width: 32px; height: 32px; }
 }

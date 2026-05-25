@@ -22,6 +22,10 @@ const staggerContainer = {
 
 const Home = () => {
   const [activeCard, setActiveCard] = useState(null);
+  
+  const handleCardClick = (cardId) => {
+    setActiveCard(activeCard === cardId ? null : cardId);
+  };
   return (
     <div className="home-page">
       {/* Hero Section */}
@@ -76,9 +80,10 @@ const Home = () => {
                 zIndex: activeCard === 1 ? 50 : (activeCard ? 5 : 10)
               }}
               whileHover={{ scale: activeCard === 1 ? 1.1 : 1.05 }}
-              onClick={() => setActiveCard(activeCard === 1 ? null : 1)}
+              onTap={() => handleCardClick(1)}
+              onClick={() => handleCardClick(1)}
               transition={{ duration: 1.5, delay: 1.2, type: "spring", bounce: 0.4 }}
-              style={{ cursor: 'pointer', perspective: 1000 }}
+              style={{ cursor: 'pointer', perspective: 1000, touchAction: 'manipulation' }}
             >
               <div className="float-wrapper float-slow">
                 <div className="bento-card glass theme-red">
@@ -108,9 +113,10 @@ const Home = () => {
                 zIndex: activeCard === 2 ? 50 : (activeCard ? 5 : 10)
               }}
               whileHover={{ scale: activeCard === 2 ? 1.1 : 1.05 }}
-              onClick={() => setActiveCard(activeCard === 2 ? null : 2)}
+              onTap={() => handleCardClick(2)}
+              onClick={() => handleCardClick(2)}
               transition={{ duration: 1.5, delay: 1.6, type: "spring", bounce: 0.4 }}
-              style={{ cursor: 'pointer', perspective: 1000 }}
+              style={{ cursor: 'pointer', perspective: 1000, touchAction: 'manipulation' }}
             >
               <div className="float-wrapper float-med">
                 <div className="bento-card theme-green">
@@ -146,9 +152,10 @@ const Home = () => {
                 zIndex: activeCard === 3 ? 50 : (activeCard ? 5 : 10)
               }}
               whileHover={{ scale: activeCard === 3 ? 1.1 : 1.05 }}
-              onClick={() => setActiveCard(activeCard === 3 ? null : 3)}
+              onTap={() => handleCardClick(3)}
+              onClick={() => handleCardClick(3)}
               transition={{ duration: 1.5, delay: 2.0, type: "spring", bounce: 0.4 }}
-              style={{ cursor: 'pointer', perspective: 1000 }}
+              style={{ cursor: 'pointer', perspective: 1000, touchAction: 'manipulation' }}
             >
               <div className="float-wrapper float-fast">
                 <div className="bento-card glass theme-red">
