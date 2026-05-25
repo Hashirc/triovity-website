@@ -9,7 +9,10 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "serve": "node server.js",
-    "start": "npm run serve"
+    "start": "npm run serve",
+    "audit": "npm audit",
+    "audit-fix": "npm audit fix",
+    "security-check": "npm audit --audit-level=moderate"
   },
   "dependencies": {
     "cors": "^2.8.6",
